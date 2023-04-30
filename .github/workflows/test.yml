@@ -56,4 +56,7 @@ jobs:
       
     steps:
       - name: write out super secret value
-        run: "echo SUPER_SECRET_KEY: ${{ secrets.SUPER_SECRET_KEY }}"
+        shell: bash
+        env: 
+          super_secret: ${{ secrets.SUPER_SECRET_KEY }}
+        run: "echo SUPER_SECRET_KEY: $super_secret"
