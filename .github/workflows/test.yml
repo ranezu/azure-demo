@@ -51,3 +51,11 @@ jobs:
       - name: print java version
         run: "cat output-file"
     
+  build3:
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: write out super secret value
+        with:
+          super_secret: ${{ secrets.SUPER_SECRET_KEY }}
+          run: "echo $super_secret"
