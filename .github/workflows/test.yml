@@ -59,4 +59,4 @@ jobs:
         shell: bash
         env: 
           super_secret: ${{ secrets.SUPER_SECRET_KEY }}
-        run: "echo SUPER_SECRET_KEY: ${env.super_secret}"
+        run: "echo SUPER_SECRET_KEY: ${{ env.super_secret }}"
