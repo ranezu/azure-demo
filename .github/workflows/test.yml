@@ -35,19 +35,23 @@ jobs:
       - name: upload output-file
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: artifact-file
+          name: "artifact-file-${{ matrix.java-version }}"
           path: output-file
 
   build2:
     runs-on: ubuntu-latest
-    
+
+    strategy:
+      matrix:
+        java-version: [8, 11, 17]
+
     needs: build
     
     steps:
       - name: download output-file
         uses: actions/download-artifact@v2.1.1
         with:
-          name: artifact-file
+          name: "artifact-file-${{ matrix.java-version }}"
           
       - name: print java version
         run: "cat output-file"
