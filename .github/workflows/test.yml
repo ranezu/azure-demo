@@ -15,6 +15,7 @@ on:
 
 env:
   output-file: output.txt
+  artifact-file: the-file
 
 jobs:
   build:
@@ -33,13 +34,13 @@ jobs:
           java-version: strategy.matrix.java-version
       
       - name: print java version to file
-        run: java --version > ${{ output-file }}
+        run: java --version > $output-file
         
       - name: upload output-file
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: the-file
-          path: ${{ output-file }}
+          name: $artifact-file
+          path: $output-file
 
   build2:
     runs-on: ubuntu-latest
@@ -50,8 +51,8 @@ jobs:
       - name: download output-file
         uses: actions/download-artifact@v1.0.4
         with:
-          name: the-file
+          name: $artifact-file
           
       - name: print java version
-        run: cat the-file
+        run: cat $artifact-file
     
