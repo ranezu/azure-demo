@@ -50,5 +50,5 @@ jobs:
           name: artifact-file
           
       - name: print java version
-        run: "cat artifact-file"
+        run: "cat output-file"
     
